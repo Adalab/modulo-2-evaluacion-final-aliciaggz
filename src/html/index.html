@@ -4,31 +4,33 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Evaluacion Final Modulo 2</title>
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/main.css" />
     <link rel="icon" href="" />
   </head>
 
-  <body>
-    <main>
-      <h1>Buscador de series de anime</h1>
-      <form>
-        <input class="js-input" type="text" placeholder="Naruto" />
-        <input class="js-btn-search" type="button" value="Buscar" />
-        <input class="js-btn-reset"  type="button" value="Reset" />
+  <body class="body">
+    <main class="main">
+      <h1 class="main__title">Buscador de series de anime</h1>
+      <form class="main__form">
+        <input class="js-input main__form--input" type="text" placeholder="Naruto" />
+        <input class="js-btn-search main__form--btn" type="button" value="Buscar" />
+        <input class="js-btn-reset main__form--btn"  type="button" value="Reset" />
       </form>
 
       
-      <div class="anime__container">
+      <div class="main__container">
         
-        <section class="anime__container--fav">
-          <h2>Series Favoritas</h2>
+        <section class="main__container--fav">
+          <h2 class="">Series Favoritas</h2>
           
           <section class="js-favanime">
 
           </section>
         </section>
-        <div class="anime__container--results">
+        <div class="main__container--results">
             <h2>Resultados</h2>
         <section class="js-section section">
          

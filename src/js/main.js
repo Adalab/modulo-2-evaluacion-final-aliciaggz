@@ -4,6 +4,7 @@ const sectionAnime = document.querySelector('.js-section');
 const inputUser = document.querySelector('.js-input');
 const searchButton = document.querySelector('.js-btn-search');
 const asideFavsElement = document.querySelector('.js-favanime');
+const resetButton = document.querySelector('.js-btn-reset');
 
 let animeList = [];
 let favAnimeList = [];
@@ -31,6 +32,13 @@ const getApiFromSearch = () => {
       renderAll(animeList);
     });
 };
+
+//reset
+function resetAll() {
+  inputUser.value = '';
+  sectionAnime.innerHTML = '';
+}
+resetButton.addEventListener('click', resetAll);
 
 //image replace
 

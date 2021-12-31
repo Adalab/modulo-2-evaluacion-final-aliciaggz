@@ -1,4 +1,56 @@
-.main__list {
-  padding-left: 2rem;
-  padding-bottom: 20px;
+.body {
+  background-color: rgb(23, 29, 34);
+  color: white;
+  font-family: 'Hind Siliguiri', sans-serif;
+}
+
+.main {
+  margin: 40px;
+  &__title {
+    margin-bottom: 30px;
+    color: rgb(224, 224, 224);
+  }
+  &__form {
+    &--input {
+      border-radius: 2em;
+      border: none;
+      width: 400px;
+      height: 30px;
+    }
+    &--btn {
+      height: 30px;
+      width: 70px;
+      border: none;
+      border-radius: 2em;
+      background-color: rgb(64, 188, 244);
+      color: white;
+      font-weight: bold;
+      &:hover {
+        background-color: rgb(40, 122, 160);
+      }
+    }
+  }
+  &__container {
+    display: flex;
+    &--fav {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-items: center;
+      width: 40%;
+      margin-top: 20px;
+      border: 10px solid rgb(209, 118, 194);
+      margin-right: 20px;
+    }
+    &--results {
+      margin-top: 20px;
+      border: 10px solid orange;
+      width: 60%;
+    }
+  }
+}
+
+.fav {
+  border: 10px solid rgb(47, 180, 53);
+  color: rgb(47, 180, 53);
 }
