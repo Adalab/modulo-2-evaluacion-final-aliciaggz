@@ -3,11 +3,9 @@
 const sectionAnime = document.querySelector('.js-section');
 const inputUser = document.querySelector('.js-input');
 const searchButton = document.querySelector('.js-btn-search');
-
 const asideFavsElement = document.querySelector('.js-favanime');
 
 let animeList = [];
-
 let favAnimeList = [];
 
 //get data from API
@@ -50,10 +48,11 @@ const replaceImage = () => {
 //paint elements
 
 const renderOne = (dataAnime) => {
-  sectionAnime.innerHTML += ` <article class="anime__article" data-id="${dataAnime.mal_id}">
+  sectionAnime.innerHTML += ` 
+            <article class="anime__article" data-id="${dataAnime.mal_id}">
               <img class="anime-image" src="${dataAnime.image_url}" alt="image-of-anime">
               <p class="title">${dataAnime.title}</p>
-          </article>`;
+              </article>`;
 };
 
 const renderAll = (dataAnime) => {
@@ -71,9 +70,7 @@ const getFavAnimesCode = (favAnime) => {
   htmlCode += `<article class="anime__article">
   <img class="anime-image" src="${favAnime.image}" alt="image-of-anime">
   <p class="title">${favAnime.title}</p>
-  <input class="js-btn-delete" data-id="${favAnime.id}" type="button" value="X">
-
-</article>`;
+  <input class="js-btn-delete" data-id="${favAnime.id}" type="button" value="X"></article>`;
   return htmlCode;
 };
 
@@ -111,9 +108,7 @@ function addFavToList(ev) {
     });
   }
 
-  //busca el anime clickado
-
-  // setLocalStorage();
+  setLocalStorage();
   paintFavAnimes();
 }
 
@@ -123,9 +118,8 @@ function deleteFavAnime(event) {
   const clickBtnParse = parseInt(clickedBtn);
 
   let foundIndex = favAnimeList.findIndex((item) => item.id === clickBtnParse);
-
   favAnimeList.splice(foundIndex, 1);
-
+  setLocalStorage();
   paintFavAnimes();
 }
 //listeners
@@ -140,6 +134,19 @@ function listenArticle() {
 
 //LOCAL STORAGE
 
+const getFromLocalStorage = () => {
+  const localStorageFav = localStorage.getItem('favoriteAnime');
+  if (localStorageFav !== null) {
+    favAnimeList = JSON.parse(localStorageFav);
+    paintFavAnimes();
+  }
+};
+
+const setLocalStorage = () => {
+  const favListSafe = JSON.stringify(favAnimeList);
+  localStorage.setItem('favoriteAnime', favListSafe);
+};
+
 //helper element
 
 const listenClickEvents = (selector, handler) => {
@@ -149,4 +156,8 @@ const listenClickEvents = (selector, handler) => {
   }
 };
 
+//start app
+
 searchButton.addEventListener('click', getApiFromSearch);
+getFromLocalStorage();
+paintFavAnimes();
