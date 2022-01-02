@@ -5,6 +5,7 @@ const inputUser = document.querySelector('.js-input');
 const searchButton = document.querySelector('.js-btn-search');
 const asideFavsElement = document.querySelector('.js-favanime');
 const resetButton = document.querySelector('.js-btn-reset');
+const resetButtonFav = document.querySelector('.js-btn-reset-fav');
 
 let animeList = [];
 let favAnimeList = [];
@@ -38,7 +39,6 @@ function resetAll() {
   inputUser.value = '';
   sectionAnime.innerHTML = '';
 }
-resetButton.addEventListener('click', resetAll);
 
 //image replace
 
@@ -57,9 +57,9 @@ const replaceImage = () => {
 
 const renderOne = (dataAnime) => {
   sectionAnime.innerHTML += ` 
-            <article class="anime__article" data-id="${dataAnime.mal_id}">
-              <img class="anime-image" src="${dataAnime.image_url}" alt="image-of-anime">
-              <p class="title">${dataAnime.title}</p>
+            <article class="main__article" data-id="${dataAnime.mal_id}">
+              <img class="main__article--image" src="${dataAnime.image_url}" alt="image-of-anime">
+              <p class="main__article--title">${dataAnime.title}</p>
               </article>`;
 };
 
@@ -75,10 +75,10 @@ const renderAll = (dataAnime) => {
 //favorite section html
 const getFavAnimesCode = (favAnime) => {
   let htmlCode = '';
-  htmlCode += `<article class="anime__article">
-  <img class="anime-image" src="${favAnime.image}" alt="image-of-anime">
-  <p class="title">${favAnime.title}</p>
-  <input class="js-btn-delete" data-id="${favAnime.id}" type="button" value="X"></article>`;
+  htmlCode += `<article class="main__article ">
+  <img class="main__article--image" src="${favAnime.image}" alt="image-of-anime">
+  <p class="main__article--title ">${favAnime.title}</p>
+  <input class="js-btn-delete main__article--dltbtn" data-id="${favAnime.id}" type="button" value="X"></article>`;
   return htmlCode;
 };
 
@@ -114,6 +114,14 @@ function addFavToList(ev) {
       title: foundAnime.title,
       image: foundAnime.image_url,
     });
+  } else {
+    const clickedBtn = ev.currentTarget.dataset.id;
+    const clickBtnParse = parseInt(clickedBtn);
+
+    let foundIndex = favAnimeList.findIndex(
+      (item) => item.id === clickBtnParse
+    );
+    favAnimeList.splice(foundIndex, 1);
   }
 
   setLocalStorage();
@@ -137,7 +145,7 @@ function listenDeleteButtons() {
 }
 
 function listenArticle() {
-  listenClickEvents('.anime__article', favAnimeStyle);
+  listenClickEvents('.main__article', favAnimeStyle);
 }
 
 //LOCAL STORAGE
@@ -164,8 +172,16 @@ const listenClickEvents = (selector, handler) => {
   }
 };
 
+//BONUS RESET ALL FAV
+function resetAllFav() {
+  localStorage.clear();
+  asideFavsElement.innerHTML = '';
+}
+
 //start app
 
 searchButton.addEventListener('click', getApiFromSearch);
+resetButton.addEventListener('click', resetAll);
+resetButtonFav.addEventListener('click', resetAllFav);
 getFromLocalStorage();
 paintFavAnimes();
