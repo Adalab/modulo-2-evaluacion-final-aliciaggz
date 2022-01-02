@@ -1,6 +1,6 @@
 # Evaluacion Final Modulo 2: Buscador de Series de Anime
 
-This page is for searching and save your favorite anime. You can find any anime by searching its title and click the botton "buscar".
+This page is for searching and saving your favorite anime. You can find any anime by searching its title and click on "buscar".
 
 # What do you need to have installed to run this project?
 
