@@ -172,6 +172,15 @@ const listenClickEvents = (selector, handler) => {
   }
 };
 
+//BONUS FAV MARK
+// const articleAnime = document.querySelectorAll('.main__article');
+
+// const addMarkToFav = () => {
+//   const animeListId = 1680;
+//   const animeInsideFav = favAnimeList.filter((item) => item.id === animeListId);
+//   console.log(animeInsideFav);
+// };
+
 //BONUS RESET ALL FAV
 function resetAllFav() {
   localStorage.clear();
