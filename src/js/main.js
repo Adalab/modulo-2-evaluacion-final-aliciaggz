@@ -75,7 +75,7 @@ const renderAll = (dataAnime) => {
 //favorite section html
 const getFavAnimesCode = (favAnime) => {
   let htmlCode = '';
-  htmlCode += `<article class="main__article ">
+  htmlCode += `<article class="main__article favorites">
   <img class="main__article--image" src="${favAnime.image}" alt="image-of-anime">
   <p class="main__article--title ">${favAnime.title}</p>
   <input class="js-btn-delete main__article--dltbtn" data-id="${favAnime.id}" type="button" value="X"></article>`;
