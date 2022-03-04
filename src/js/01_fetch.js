@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 'use strict';
 const getApiFromSearch = () => {
-  fetch(`https://api.jikan.moe/v3/search/anime?q=${inputUser.value}`)
+  fetch(`http://api.jikan.moe/v3/search/anime?q=${inputUser.value}`)
     .then((response) => response.json())
     .then((data) => {
       sectionAnime.innerHTML = '';
